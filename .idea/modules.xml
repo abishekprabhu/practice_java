@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/2025-04-24/2025-04-24.iml" filepath="$PROJECT_DIR$/2025-04-24/2025-04-24.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2025-04-25/2025-04-25.iml" filepath="$PROJECT_DIR$/2025-04-25/2025-04-25.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2025-04-28/2025-04-28.iml" filepath="$PROJECT_DIR$/2025-04-28/2025-04-28.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2025-04-29/2025-04-29.iml" filepath="$PROJECT_DIR$/2025-04-29/2025-04-29.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2025-04-30/2025-04-30.iml" filepath="$PROJECT_DIR$/2025-04-30/2025-04-30.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2025-05-05/2025-05-05.iml" filepath="$PROJECT_DIR$/2025-05-05/2025-05-05.iml" />
+      <module fileurl="file://$PROJECT_DIR$/practice.iml" filepath="$PROJECT_DIR$/practice.iml" />
+    </modules>
+  </component>
+</project>
