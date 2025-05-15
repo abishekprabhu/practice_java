@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_2.xsd"
+             version="3.2">
+
+    <persistence-unit name="jpa-101" transaction-type="RESOURCE_LOCAL">
+<!--        <class>com.example.model.MyEntity</class>-->
+        <description>This is a sample jpa project</description>
+<!--         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
+        <properties>
+                    <!-- Uncomment if explicitly using Hibernate -->
+                        <!-- JDBC Configuration -->
+                        <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+                        <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/person_db"/>
+                        <property name="jakarta.persistence.jdbc.user" value="postgres"/>
+                        <property name="jakarta.persistence.jdbc.password" value="postgres"/>
+
+                        <!-- Hibernate Configuration -->
+<!--                        <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>-->
+                        <property name="hibernate.show_sql" value="true"/>
+                        <property name="hibernate.format_sql" value="true"/>
+                        <property name="hibernate.highlight_sql" value="true"/>
+                        <property name="hibernate.use_sql_comments" value="true"/>
+                        <!-- Optional: Show bind parameters -->
+                        <property name="hibernate.show_sql_bind" value="true"/>
+
+                        <!-- Schema Generation (Optional) -->
+                        <property name="jakarta.persistence.schema-generation.database.action" value="update"/>
+        </properties>
+    </persistence-unit>
+</persistence>
+
+
+<!--<persistence>-->
+<!--<persistence-unit name="jpa-102">-->
+<!--    <description>This is a sample jpa project</description>-->
+<!--    &lt;!&ndash; <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> &ndash;&gt;-->
+<!--    <properties>-->
+<!--        <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>-->
+<!--        <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/person_db"/>-->
+<!--        <property name="jakarta.persistence.jdbc.user" value="root"/>-->
+<!--        <property name="jakarta.persistence.jdbc.password" value="root"/>-->
+
+<!--        <property name="hibernate.show_sql" value="true"/>-->
+<!--        <property name="hibernate.format_sql" value="true"/>-->
+<!--        <property name="hibernate.highlight_sql" value="true"/>-->
+<!--        <property name="hibernate.use_sql_comments" value="true"/>-->
+
+        <!-- JDBC H2 connection properties -->
+        <!--            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>-->
+        <!--            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:testdb"/>-->
+        <!--            <property name="javax.persistence.jdbc.user" value="sa"/>-->
+        <!--            <property name="javax.persistence.jdbc.password" value=""/>-->
+        <!-- Hibernate-specific properties -->
+        <!--            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>-->
+        <!--            <property name="hibernate.hbm2ddl.auto" value="update"/>-->
+        <!--            <property name="hibernate.show_sql" value="true"/>-->
+        <!--            <property name="hibernate.format_sql" value="true"/>-->
+<!--    </properties>-->
+<!--</persistence-unit>-->
+<!--</persistence>-->
