@@ -8,14 +8,17 @@
 <!--        <class>com.example.model.MyEntity</class>-->
         <description>This is a sample jpa project</description>
 <!--         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
+
+        <class>com.hcltech.model.Person</class>
         <properties>
                     <!-- Uncomment if explicitly using Hibernate -->
                         <!-- JDBC Configuration -->
                         <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-                        <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/person_db"/>
+                        <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres"/>
                         <property name="jakarta.persistence.jdbc.user" value="postgres"/>
                         <property name="jakarta.persistence.jdbc.password" value="postgres"/>
-
+                        <property name="jakarta.persistence.schema-generation.database.action" value="update"/>
+<!--                        <property name="hibernate.hbm2ddl.auto" value="update"/>-->
                         <!-- Hibernate Configuration -->
 <!--                        <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>-->
                         <property name="hibernate.show_sql" value="true"/>
