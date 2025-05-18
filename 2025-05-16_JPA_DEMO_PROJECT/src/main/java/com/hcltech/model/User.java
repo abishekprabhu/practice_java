@@ -5,12 +5,12 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "user")
+@Table(name = "app_user")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USERS_SEQ")
-    @SequenceGenerator(name = "USERS_SEQ", sequenceName = "SEQUENCE_USERS" , allocationSize = 1)
+    @SequenceGenerator(name = "USERS_SEQ", sequenceName = "SEQUENCE_USERS", allocationSize = 1)
     private Long id;
 
     private String name;
@@ -19,10 +19,13 @@ public class User {
     @JoinColumn(name = "profile_id")
     private Profile profile;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
     private List<Order> orders;
 
-    public User(){
+
+    public User() {
     }
 
     public User(String name, Profile profile) {
