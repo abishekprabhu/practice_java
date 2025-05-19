@@ -9,6 +9,7 @@
         <module name="2025-05-12 (1)" />
         <module name="2025-05-06" />
         <module name="2025-05-16_JPA_DEMO_PROJECT" />
+        <module name="SpringDemo" />
         <module name="2025-05-13" />
       </profile>
     </annotationProcessing>
@@ -16,5 +17,10 @@
       <module name="05-05-2025" target="21" />
       <module name="2025-05-16" target="21" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="SpringDemo" options="-parameters" />
+    </option>
   </component>
 </project>
