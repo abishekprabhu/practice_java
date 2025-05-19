@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="2025-05-12 (1)" />
         <module name="2025-05-06" />
+        <module name="SpringSample" />
         <module name="2025-05-16_JPA_DEMO_PROJECT" />
         <module name="SpringDemo" />
         <module name="2025-05-13" />
@@ -21,6 +22,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="SpringDemo" options="-parameters" />
+      <module name="SpringSample" options="-parameters" />
     </option>
   </component>
 </project>
