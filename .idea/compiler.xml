@@ -2,26 +2,31 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false" useProcessorModulePath="true">
+          <entry name="$PROJECT_DIR$/SpringSample/src/main/java/coder/abishekprabhu/springsample/mapper/MovieMapper.java" />
+        </processorPath>
         <module name="2025-05-12 (1)" />
         <module name="2025-05-06" />
-        <module name="SpringSample" />
         <module name="2025-05-16_JPA_DEMO_PROJECT" />
-        <module name="SpringDemo" />
         <module name="2025-05-13" />
       </profile>
+      <profile name="Annotation profile for SpringSample" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <processorPath>
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.5.5.Final/mapstruct-processor-1.5.5.Final.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.5.5.Final/mapstruct-1.5.5.Final.jar" />
+        </processorPath>
+        <module name="SpringSample" />
+      </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="05-05-2025" target="21" />
-      <module name="2025-05-16" target="21" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="SpringDemo" options="-parameters" />
       <module name="SpringSample" options="-parameters" />
     </option>
   </component>
