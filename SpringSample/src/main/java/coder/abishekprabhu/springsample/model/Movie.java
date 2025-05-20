@@ -1,26 +1,23 @@
 package coder.abishekprabhu.springsample.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
-@Data
+@Table(name = "movie")
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class Movie {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "movie_seq")
+    @SequenceGenerator(name = "movie_seq", sequenceName = "movie_seq", allocationSize = 1)
     private Long id;
+
     private String title;
     private String director;
     private int year;
     private String genre;
-
 }
