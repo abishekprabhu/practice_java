@@ -16,6 +16,15 @@
         <module name="2025-05-16_JPA_DEMO_PROJECT" />
         <module name="2025-05-13" />
       </profile>
+      <profile name="Annotation profile for SpringStructure" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
+        </processorPath>
+        <module name="SpringStructure" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="SpringDemo" target="21" />
@@ -24,6 +33,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="SpringSample" options="-parameters" />
+      <module name="SpringStructure" options="-parameters" />
     </option>
   </component>
 </project>
