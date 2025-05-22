@@ -1,15 +1,24 @@
 package com.hcltech.EmployeeManagement.mapper.Employee;
 
+import com.hcltech.EmployeeManagement.dto.Employee.EmployeeRequestDTO;
 import com.hcltech.EmployeeManagement.dto.Employee.EmployeeResponseDTO;
 import com.hcltech.EmployeeManagement.dto.Mark.MarksDTO;
+import com.hcltech.EmployeeManagement.model.Batch;
 import com.hcltech.EmployeeManagement.model.Employee;
+import com.hcltech.EmployeeManagement.repository.BatchRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
+@RequiredArgsConstructor
 public class EmployeeMapper {
 
-    public static EmployeeResponseDTO mapToDTO(Employee emp){
+    private final BatchRepository batchRepository;
+
+    public final EmployeeResponseDTO mapToDTO(Employee emp){
 //        return new EmployeeResponseDTO(emp.getId(),emp.getName(), emp.getEmail(), emp.getRole());
 
         EmployeeResponseDTO dto = new EmployeeResponseDTO();
@@ -29,5 +38,18 @@ public class EmployeeMapper {
         dto.setMarks(marksList);
 
         return dto;
+    }
+
+    //mapToEntity method
+    public Employee mapToEntity(EmployeeRequestDTO dto){
+        Batch batch = batchRepository.findById(dto.getBatchId())
+                .orElseThrow(() -> new RuntimeException("Batch not found"));
+        Employee emp = new Employee();
+//        emp.setId(dto.getId());
+        emp.setName(dto.getName());
+        emp.setEmail(dto.getEmail());
+        emp.setRole(dto.getRole());
+        emp.setBatch(batch);
+        return emp;
     }
 }

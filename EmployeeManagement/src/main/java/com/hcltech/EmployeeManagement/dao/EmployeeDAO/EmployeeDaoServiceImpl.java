@@ -10,26 +10,85 @@ import com.hcltech.EmployeeManagement.service.Employee.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
-public class EmployeeDaoServiceImpl {
+public class EmployeeDaoServiceImpl implements EmployeeDaoService{
 
     private final EmployeeService employeeService;
 
     private final BatchRepository batchRepository;
 
-    public EmployeeResponseDTO create(EmployeeRequestDTO dto) {
-        Batch batch = batchRepository.findById(dto.getBatchId())
+    private final EmployeeMapper employeeMapper;
+
+    @Override
+    public EmployeeResponseDTO createEmployee(EmployeeRequestDTO dto) {
+/*        Batch batch = batchRepository.findById(dto.getBatchId())
                 .orElseThrow(() -> new RuntimeException("Batch not found"));
 
         Employee emp = new Employee();
         emp.setName(dto.getName());
         emp.setEmail(dto.getEmail());
         emp.setRole(dto.getRole());
-        emp.setBatch(batch);
+        emp.setBatch(batch);*/
+
+        Employee emp = employeeMapper.mapToEntity(dto);
 //        emp.setMarks(dt);
-        return EmployeeMapper.mapToDTO(employeeService.save(emp));
+        return employeeMapper.mapToDTO(employeeService.save(emp));
     }
+
+    @Override
+    public EmployeeResponseDTO updateEmployee(Long id, EmployeeRequestDTO dto) {
+        Employee emp = employeeService.findById(id)
+                .orElseThrow(() -> new RuntimeException("Employee not found"));
+
+/*        emp.setName(dto.getName());
+        emp.setEmail(dto.getEmail());
+        emp.setRole(dto.getRole());
+        emp.setBatch(batchRepository.findById(dto.getBatchId())
+                .orElseThrow(() -> new RuntimeException("Batch not found")));*/
+
+        emp = employeeMapper.mapToEntity(dto);
+        return employeeMapper.mapToDTO(employeeService.save(emp));
+    }
+
+    @Override
+    public EmployeeResponseDTO getEmployeeById(Long id) {
+        Employee emp = employeeService.findById(id)
+                .orElseThrow(() -> new RuntimeException("Employee not found"));
+        return employeeMapper.mapToDTO(emp);
+    }
+
+    @Override
+    public List<EmployeeResponseDTO> getAllEmployees() {
+        return employeeService.findAll().stream()
+                .map(employeeMapper::mapToDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<EmployeeResponseDTO> getByBatchId(Long batchId) {
+        Batch batch = batchRepository.findById(batchId)
+                .orElseThrow(() -> new RuntimeException("Batch not found"));
+        return employeeService.findByBatchId(batch.getId()).stream()
+                .map(employeeMapper::mapToDTO)
+                .collect(Collectors.toList());
+/*        return employeeService.findAll().stream()
+                .filter(emp -> emp.getBatch().getId().equals(batchId))
+                .map(EmployeeMapper::mapToDTO)
+                .collect(Collectors.toList());*/
+    }
+
+    @Override
+    public void deleteEmployee(Long id) {
+        employeeService.findById(id)
+                .orElseThrow(() -> new RuntimeException("Employee not found"));
+        employeeService.deleteById(id);
+    }
+
+
 
 
 }
