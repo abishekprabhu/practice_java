@@ -1,0 +1,3 @@
+com\hcltech\springstructure\model\Person.class
+com\hcltech\springstructure\repository\PersonRepository.class
+com\hcltech\springstructure\SpringStructureApplication.class
