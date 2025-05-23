@@ -1,44 +1,79 @@
 package com.hcltech.EmployeeManagement.service.Employee;
 
+import com.hcltech.EmployeeManagement.dao.EmployeeDAO.EmployeeDaoService;
+import com.hcltech.EmployeeManagement.dto.Employee.EmployeeRequestDTO;
+import com.hcltech.EmployeeManagement.dto.Employee.EmployeeResponseDTO;
+import com.hcltech.EmployeeManagement.mapper.Employee.EmployeeMapper;
+import com.hcltech.EmployeeManagement.model.Batch;
 import com.hcltech.EmployeeManagement.model.Employee;
+import com.hcltech.EmployeeManagement.repository.BatchRepository;
 import com.hcltech.EmployeeManagement.repository.EmployeeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {
 
-    private final EmployeeRepository employeeRepository;
+    private final EmployeeDaoService employeeDaoService;
+
+    private final BatchRepository batchRepository;
+
+    private final EmployeeMapper employeeMapper;
 
     @Override
-    public Employee save(Employee emp) {
-        return employeeRepository.save(emp);
+    public EmployeeResponseDTO createEmployee(EmployeeRequestDTO dto) {
+
+        Employee emp = employeeMapper.mapToEntity(dto);
+        return employeeMapper.mapToDTO(employeeDaoService.save(emp));
     }
 
     @Override
-    public Optional<Employee> findById(Long id) {
-        return employeeRepository.findById(id);
+    public EmployeeResponseDTO updateEmployee(Long id, EmployeeRequestDTO dto) {
+        Employee emp = employeeDaoService.findById(id)
+                .orElseThrow(() -> new RuntimeException("Employee not found"));
+
+        emp = employeeMapper.mapToEntity(dto);
+        return employeeMapper.mapToDTO(employeeDaoService.save(emp));
     }
 
     @Override
-    public List<Employee> findAll() {
-        return employeeRepository.findAll();
+    public EmployeeResponseDTO getByEmployeeId(Long id) {
+        Employee emp = employeeDaoService.findById(id)
+                .orElseThrow(() -> new RuntimeException("Employee not found"));
+        return employeeMapper.mapToDTO(emp);
     }
 
     @Override
-    public List<Employee> findByBatchId(Long batchId) {
-        return employeeRepository.findByBatchId(batchId);
+    public List<EmployeeResponseDTO> getAllEmployees() {
+        return employeeDaoService.findAll().stream()
+                .map(employeeMapper::mapToDTO)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public void deleteById(Long id) {
-        employeeRepository.deleteById(id);
+    public List<EmployeeResponseDTO> getByBatchId(Long batchId) {
+        Batch batch = batchRepository.findById(batchId)
+                .orElseThrow(() -> new RuntimeException("Batch not found"));
+        return employeeDaoService.findByBatchId(batch.getId()).stream()
+                .map(employeeMapper::mapToDTO)
+                .collect(Collectors.toList());
+/*        return employeeService.findAll().stream()
+                .filter(emp -> emp.getBatch().getId().equals(batchId))
+                .map(EmployeeMapper::mapToDTO)
+                .collect(Collectors.toList());*/
     }
 
+    @Override
+    public void deleteEmployee(Long id) {
+        employeeDaoService.findById(id)
+                .orElseThrow(() -> new RuntimeException("Employee not found"));
+        employeeDaoService.deleteById(id);
+    }
 
 
 }

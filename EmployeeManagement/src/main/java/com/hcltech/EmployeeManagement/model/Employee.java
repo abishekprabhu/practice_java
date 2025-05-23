@@ -30,7 +30,7 @@ public class Employee {
     @JoinColumn(name = "batch_id")
     private Batch batch;
 
-    @OneToMany(mappedBy = "employee" , cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "employee" , cascade = CascadeType.ALL , orphanRemoval = true)
     private List<Marks> marks;
 
 

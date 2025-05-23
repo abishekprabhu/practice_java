@@ -1,41 +1,37 @@
 package com.hcltech.EmployeeManagement.dao.MarkDAO;
 
+import com.hcltech.EmployeeManagement.model.Marks;
+import com.hcltech.EmployeeManagement.repository.MarkRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
+@Service
+@RequiredArgsConstructor
 public class MarkDaoServiceImpl implements MarkDaoService{
 
-    /*    @Override
-    public MarksDTO addMarks(MarksRequestDTO dto) {
-        Employee employee = employeeRepo.findById(dto.getEmployeeId())
-            .orElseThrow(() -> new RuntimeException("Employee not found"));
-        Exam exam = examRepo.findById(dto.getExamId())
-            .orElseThrow(() -> new RuntimeException("Exam not found"));
-
-        Marks mark = new Marks();
-        mark.setEmployee(employee);
-        mark.setExam(exam);
-        mark.setScore(dto.getScore());
-
-        marksRepo.save(mark);
-
-        return mapToDTO(mark);
+    private final MarkRepository markRepository;
+    @Override
+    public Marks save(Marks exam) {
+        return markRepository.save(exam);
     }
 
     @Override
-    public List<MarksDTO> getAllMarks() {
-        return marksRepo.findAll().stream()
-            .map(this::mapToDTO)
-            .collect(Collectors.toList());
+    public Optional<Marks> findById(Long id) {
+        return markRepository.findById(id);
     }
 
     @Override
-    public void deleteMarks(Long id) {
-        marksRepo.deleteById(id);
+    public List<Marks> findAll() {
+        return markRepository.findAll();
     }
 
-    private MarksDTO mapToDTO(Marks mark) {
-        MarksDTO dto = new MarksDTO();
-        dto.setExamName(mark.getExam().getName());
-        dto.setScore(mark.getScore());
-        return dto;
-    }*/
+    @Override
+    public void deleteById(Long id) {
+        markRepository.deleteById(id);
+    }
+
+
 }

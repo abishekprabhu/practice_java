@@ -1,4 +1,4 @@
-package com.hcltech.EmployeeManagement.mapper;
+package com.hcltech.EmployeeManagement.mapper.Exam;
 
 import com.hcltech.EmployeeManagement.dto.Exam.ExamResponseDTO;
 import com.hcltech.EmployeeManagement.model.Exam;

@@ -9,7 +9,9 @@ import com.hcltech.EmployeeManagement.repository.BatchRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
@@ -18,7 +20,7 @@ public class EmployeeMapper {
 
     private final BatchRepository batchRepository;
 
-    public final EmployeeResponseDTO mapToDTO(Employee emp){
+    public EmployeeResponseDTO mapToDTO(Employee emp){
 //        return new EmployeeResponseDTO(emp.getId(),emp.getName(), emp.getEmail(), emp.getRole());
 
         EmployeeResponseDTO dto = new EmployeeResponseDTO();
@@ -28,12 +30,23 @@ public class EmployeeMapper {
         dto.setRole(emp.getRole());
         dto.setBatchCode(emp.getBatch().getBatchCode());
 
-        List<MarksDTO> marksList = emp.getMarks().stream().map(mark -> {
-            MarksDTO marksDTO = new MarksDTO();
-            marksDTO.setExamName(mark.getExam().getName());
-            marksDTO.setScore(mark.getScore());
-            return marksDTO;
-        }).toList();
+        List<MarksDTO> marksList = Optional.ofNullable(emp.getMarks())
+                .orElse(Collections.emptyList())
+                .stream()
+                .map(mark -> {
+                    MarksDTO marksDTO = new MarksDTO();
+                    marksDTO.setExamName(mark.getExam().getName());
+                    marksDTO.setScore(mark.getScore());
+                    return marksDTO;
+                })
+                .toList();
+
+//        List<MarksDTO> marksList = emp.getMarks().stream().map(mark -> {
+//            MarksDTO marksDTO = new MarksDTO();
+//            marksDTO.setExamName(mark.getExam().getName());
+//            marksDTO.setScore(mark.getScore());
+//            return marksDTO;
+//        }).toList();
 
         dto.setMarks(marksList);
 

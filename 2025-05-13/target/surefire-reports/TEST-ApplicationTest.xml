@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="ApplicationTest" time="4.053" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="ApplicationTest" time="2.082" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\JAVA\JDK-21.0.4\bin"/>
-    <property name="sun.java.command" value="C:\Users\abishekprabhu.kannan\AppData\Local\Temp\surefire8921631099792941624\surefirebooter-20250522102759081_3.jar C:\Users\abishekprabhu.kannan\AppData\Local\Temp\surefire8921631099792941624 2025-05-22T10-27-56_547-jvmRun1 surefire-20250522102759081_1tmp surefire_0-20250522102759081_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\abishekprabhu.kannan\AppData\Local\Temp\surefire4605486483683753012\surefirebooter-20250523195853414_3.jar C:\Users\abishekprabhu.kannan\AppData\Local\Temp\surefire4605486483683753012 2025-05-23T19-58-52_024-jvmRun1 surefire-20250523195853414_1tmp surefire_0-20250523195853414_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\abishekprabhu.kannan\OneDrive - HCL TECHNOLOGIES LIMITED\IDEA_PROJECTS\practice\2025-05-13\target\test-classes;C:\Users\abishekprabhu.kannan\OneDrive - HCL TECHNOLOGIES LIMITED\IDEA_PROJECTS\practice\2025-05-13\target\classes;C:\Users\abishekprabhu.kannan\.m2\repository\org\junit\jupiter\junit-jupiter\5.13.0-M3\junit-jupiter-5.13.0-M3.jar;C:\Users\abishekprabhu.kannan\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.13.0-M3\junit-jupiter-api-5.13.0-M3.jar;C:\Users\abishekprabhu.kannan\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\abishekprabhu.kannan\.m2\repository\org\junit\platform\junit-platform-commons\1.13.0-M3\junit-platform-commons-1.13.0-M3.jar;C:\Users\abishekprabhu.kannan\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\abishekprabhu.kannan\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.13.0-M3\junit-jupiter-params-5.13.0-M3.jar;C:\Users\abishekprabhu.kannan\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.13.0-M3\junit-jupiter-engine-5.13.0-M3.jar;C:\Users\abishekprabhu.kannan\.m2\repository\org\junit\platform\junit-platform-engine\1.13.0-M3\junit-platform-engine-1.13.0-M3.jar;C:\Users\abishekprabhu.kannan\.m2\repository\org\postgresql\postgresql\42.7.5\postgresql-42.7.5.jar;C:\Users\abishekprabhu.kannan\.m2\repository\org\checkerframework\checker-qual\3.48.3\checker-qual-3.48.3.jar;C:\Users\abishekprabhu.kannan\.m2\repository\com\zaxxer\HikariCP\5.1.0\HikariCP-5.1.0.jar;C:\Users\abishekprabhu.kannan\.m2\repository\org\slf4j\slf4j-api\1.7.36\slf4j-api-1.7.36.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\abishekprabhu.kannan\AppData\Local\Temp\surefire8921631099792941624\surefirebooter-20250522102759081_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\abishekprabhu.kannan\AppData\Local\Temp\surefire4605486483683753012\surefirebooter-20250523195853414_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.4+7-LTS"/>
@@ -61,7 +61,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="contextLoads" classname="ApplicationTest" time="3.941">
+  <testcase name="contextLoads" classname="ApplicationTest" time="2.018">
     <system-err><![CDATA[SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
