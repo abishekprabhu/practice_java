@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface MarkDaoService {
-
     Marks save(Marks exam);
     Optional<Marks> findById(Long id);
     List<Marks> findAll();

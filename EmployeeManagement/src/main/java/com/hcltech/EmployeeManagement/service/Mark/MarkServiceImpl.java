@@ -26,6 +26,7 @@ public class MarkServiceImpl implements MarkService {
 
     private final ExamDaoService examDaoService;
 
+    private final MarkMapper markMapper;
 
     @Override
     public MarksDTO addMarks(MarksRequestDTO dto) {
@@ -33,20 +34,17 @@ public class MarkServiceImpl implements MarkService {
                 .orElseThrow(() -> new RuntimeException("Employee not found"));
         Exam exam = examDaoService.findById(dto.getExamId()).orElseThrow(()-> new RuntimeException());
 
-        Marks mark = new Marks();
-        mark.setEmployee(employee);
-        mark.setExam(exam);
-        mark.setScore(dto.getScore());
+        Marks mark = markMapper.toEntity(dto);
 
         markDaoService.save(mark);
 
-        return MarkMapper.mapToDTO(mark);
+        return markMapper.toDTO(mark);
     }
 
     @Override
     public List<MarksDTO> getAllMarks() {
         return markDaoService.findAll().stream()
-                .map(MarkMapper::mapToDTO)
+                .map(markMapper::toDTO)
                 .collect(Collectors.toList());
     }
 
@@ -66,7 +64,7 @@ public class MarkServiceImpl implements MarkService {
 
         markDaoService.save(mark);
 
-        return MarkMapper.mapToDTO(mark);
+        return markMapper.toDTO(mark);
     }
 
     @Override

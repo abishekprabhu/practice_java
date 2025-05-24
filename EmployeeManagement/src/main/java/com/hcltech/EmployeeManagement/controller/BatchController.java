@@ -16,10 +16,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/batchService/v1/batch")
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class BatchController {
 
     private final BatchService batchService;
+
+    BatchController(BatchService batchService) {
+        this.batchService = batchService;
+    }
 
     @PostMapping
     public ResponseEntity<BatchDTO> create(@RequestBody BatchDTO dto){

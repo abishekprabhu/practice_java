@@ -26,23 +26,24 @@ public class BatchServiceImpl implements BatchService {
 
     @Override
     public BatchDTO createBatch(BatchDTO dto) {
-        Batch batch = new Batch();
-        batch.setBatchCode(dto.getBatchCode());
+//        Batch batch = new Batch();
+//        batch.setBatchCode(dto.getBatchCode());
+        Batch batch = batchMapper.toEntity(dto);
         batchDaoService.save(batch);
-        return batchMapper.mapToDTO(batch);
+        return batchMapper.toDTO(batch);
     }
 
     @Override
     public BatchDTO getBatchById(Long id) {
         Batch batch = batchDaoService.findById(id)
                 .orElseThrow(() -> new RuntimeException("Batch not found"));
-        return batchMapper.mapToDTO(batch);
+        return batchMapper.toDTO(batch);
     }
 
     @Override
     public List<BatchDTO> getAllBatches() {
         return batchDaoService.findAll().stream()
-                .map(batchMapper::mapToDTO)
+                .map(batchMapper::toDTO)
                 .collect(Collectors.toList());
     }
 
@@ -53,7 +54,7 @@ public class BatchServiceImpl implements BatchService {
 
         batch.setBatchCode(dto.getBatchCode());
         batchDaoService.save(batch);
-        return batchMapper.mapToDTO(batch);
+        return batchMapper.toDTO(batch);
     }
 
     @Override
