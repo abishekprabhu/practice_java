@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.MissingFormatArgumentException;
 
 @RestController
 @RequestMapping("/api/employeeService/v1/employee")
@@ -20,8 +21,12 @@ public class EmployeeController {
     private final EmployeeService employeeService;
 
     @PostMapping
-    public ResponseEntity<EmployeeResponseDTO> create(@Valid @RequestBody EmployeeRequestDTO dto){
-        return ResponseEntity.status(HttpStatus.CREATED).body(employeeService.createEmployee(dto));
+    public ResponseEntity<EmployeeResponseDTO> create( @RequestBody @Valid EmployeeRequestDTO dto){
+        try{
+            return ResponseEntity.status(HttpStatus.CREATED).body(employeeService.createEmployee(dto));
+        }catch (MissingFormatArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
     }
 
     @GetMapping("/{id}")

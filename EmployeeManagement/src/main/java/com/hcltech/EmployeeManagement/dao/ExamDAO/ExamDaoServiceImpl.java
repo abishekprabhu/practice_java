@@ -20,7 +20,6 @@ public class ExamDaoServiceImpl implements ExamDaoService {
 
     private final ExamRepository examRepository;
 
-
     @Override
     public Exam save(Exam exam) {
         return examRepository.save(exam);
