@@ -4,6 +4,7 @@ import com.hcltech.EmployeeManagement.dao.EmployeeDAO.EmployeeDaoService;
 import com.hcltech.EmployeeManagement.dto.Employee.EmployeeRequestDTO;
 import com.hcltech.EmployeeManagement.dto.Employee.EmployeeResponseDTO;
 import com.hcltech.EmployeeManagement.service.Employee.EmployeeService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class EmployeeController {
     private final EmployeeService employeeService;
 
     @PostMapping
-    public ResponseEntity<EmployeeResponseDTO> create(@RequestBody EmployeeRequestDTO dto){
+    public ResponseEntity<EmployeeResponseDTO> create(@Valid @RequestBody EmployeeRequestDTO dto){
         return ResponseEntity.status(HttpStatus.CREATED).body(employeeService.createEmployee(dto));
     }
 
@@ -34,11 +35,9 @@ public class EmployeeController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<EmployeeResponseDTO> update(@PathVariable Long id,@RequestBody EmployeeRequestDTO dto){
+    public ResponseEntity<EmployeeResponseDTO> update(@PathVariable Long id,@Valid @RequestBody EmployeeRequestDTO dto){
         try {
             return ResponseEntity.ok(employeeService.updateEmployee(id,dto));
-/*        }catch(ExpenseNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());*/
         }catch(Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }

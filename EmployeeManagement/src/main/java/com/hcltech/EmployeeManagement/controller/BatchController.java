@@ -44,8 +44,6 @@ public class BatchController {
     public ResponseEntity<BatchDTO> update(@PathVariable Long id,@RequestBody BatchDTO dto){
         try {
             return ResponseEntity.ok(batchService.updateBatch(id,dto));
-/*        }catch(ExpenseNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());*/
         }catch(Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }

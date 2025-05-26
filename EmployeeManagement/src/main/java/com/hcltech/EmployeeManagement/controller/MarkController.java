@@ -33,8 +33,6 @@ public class MarkController {
     public ResponseEntity<MarksDTO> update(@PathVariable Long id,@RequestBody MarksRequestDTO dto){
         try {
             return ResponseEntity.ok(markService.updateMarks(id,dto));
-//        }catch(ExpenseNotFoundException e) {
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }catch(Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }

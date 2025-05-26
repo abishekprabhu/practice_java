@@ -10,6 +10,7 @@ import com.hcltech.EmployeeManagement.model.Batch;
 import com.hcltech.EmployeeManagement.model.Marks;
 import com.hcltech.EmployeeManagement.repository.BatchRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
@@ -18,6 +19,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class BatchServiceImpl implements BatchService {
     private final BatchDaoService batchDaoService;
@@ -59,6 +61,7 @@ public class BatchServiceImpl implements BatchService {
 
     @Override
     public void deleteBatch(Long id) {
+        log.warn("DELETED BATCH ID : {}", id);
         batchDaoService.deleteById(id);
     }
 
@@ -88,6 +91,7 @@ public class BatchServiceImpl implements BatchService {
                     }).toList();
 
                     batchExamScoreDTO.setExams(examScoreDTOS);
+                    log.info("BATCH EXAM SCORE : {}", batchExamScoreDTO);
                     return batchExamScoreDTO;
                 }
         ).toList();
