@@ -1,3 +1,4 @@
+<!--
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration monitorInterval="60">
     <Properties>
@@ -6,7 +7,7 @@
         <property name="pattern">%d{yyyy-MMM-dd HH:mm:ss} [%t] %-5level %-50c{1.} - %msg%n</property>
     </Properties>
     <Appenders>
-        <!--ALL API INFO-->
+        &lt;!&ndash;ALL API INFO&ndash;&gt;
         <Console name="Console-Appender" target="SYSTEM_OUT">
             <PatternLayout pattern="${pattern}"/>
         </Console>
@@ -15,15 +16,15 @@
                      filePattern="${log-path_back}/order_log-%i.log" >
             <PatternLayout pattern="${pattern}"/>
             <Policies>
-                <!-- <TimeBasedTriggeringPolicy />--> <!-- Rotated everyday -->
-                <SizeBasedTriggeringPolicy size="25 MB" /> <!-- Or every 25 MB -->
+                &lt;!&ndash; <TimeBasedTriggeringPolicy />&ndash;&gt; &lt;!&ndash; Rotated everyday &ndash;&gt;
+                <SizeBasedTriggeringPolicy size="25 MB" /> &lt;!&ndash; Or every 25 MB &ndash;&gt;
             </Policies>
             <DefaultRolloverStrategy max="100"/>
         </RollingFile>
     </Appenders>
 
     <Loggers>
-        <!--ALL API INFO-->
+        &lt;!&ndash;ALL API INFO&ndash;&gt;
         <Logger name="com.sample" level="info" additivity="false">
             <AppenderRef ref="Api-File-Appender"/>
             <AppenderRef ref="Console-Appender"/>
@@ -33,4 +34,4 @@
             <AppenderRef ref="Api-File-Appender" />
         </Root>
     </Loggers>
-</Configuration>
+</Configuration>-->
